@@ -4,28 +4,27 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"os"
 
-	"github.com/joho/godotenv"
+	"github.com/smithwithatypo/achilles-backend/config"
+    "github.com/smithwithatypo/achilles-backend/routes"
 )
 
-// handler function
-func helloHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello, World!")
-}
 
 func main() {
-	// Load environment variables from .env file
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
-
-	// Register handler
-	http.HandleFunc("/", helloHandler)
+	// // Load environment variables from .env file
+	// err := godotenv.Load()
+	// if err != nil {
+	// 	log.Fatal("Error loading .env file")
+	// }
+    
+	// Load environment variables
+    config.LoadConfig()
+    
+    // Register routes
+    routes.RegisterRoutes()
 
 	// Define server address
-	port := ":" + os.Getenv("PORT")
+	port := ":" + config.GetEnv("PORT")
 	fmt.Println("Starting server on port", port)
 
 	// Start the server
