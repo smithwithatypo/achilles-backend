@@ -6,9 +6,9 @@ import (
 	"net/http"
 
 	"github.com/smithwithatypo/achilles-backend/config"
-    "github.com/smithwithatypo/achilles-backend/routes"
+	_ "github.com/smithwithatypo/achilles-backend/middleware" // Import middleware package
+	"github.com/smithwithatypo/achilles-backend/routes"
 )
-
 
 func main() {
 	// // Load environment variables from .env file
@@ -16,12 +16,12 @@ func main() {
 	// if err != nil {
 	// 	log.Fatal("Error loading .env file")
 	// }
-    
+
 	// Load environment variables
-    config.LoadConfig()
-    
-    // Register routes
-    routes.RegisterRoutes()
+	config.LoadConfig()
+
+	// Register routes
+	routes.RegisterRoutes()
 
 	// Define server address
 	port := ":" + config.GetEnv("PORT")
