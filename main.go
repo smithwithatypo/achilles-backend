@@ -18,7 +18,7 @@ func main() {
 	// }
 
 	// Load environment variables
-	config.LoadConfig()
+	// config.LoadConfig()
 
 	// Register routes
 	routes.RegisterRoutes()
