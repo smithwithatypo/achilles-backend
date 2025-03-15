@@ -58,10 +58,11 @@ func HandleOpenAIRequest(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Set default model if not provided
-	model := request.Model
-	if model == "" {
-		model = "gpt-4o-mini" // Default model
-	}
+	// model := request.Model
+	// if model == "" {
+	// 	model = "gpt-4o-mini" // Default model
+	// }
+	model:= "gpt-4o-mini"  // hardcoding model choice for now
 
 	// Create the OpenAI API request
 	openAIReq := OpenAIAPIRequest{
