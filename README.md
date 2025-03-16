@@ -26,6 +26,38 @@ To run the project, use the following command:
 go run server.go
 ```
 
-## License
+## Git Branch Management
 
-This project is licensed under the MIT License.
+### Pruning Remote and Local Branches
+
+To clean up your Git repository by removing references to deleted remote branches and then removing local branches:
+
+1. Prune remote-tracking branches that no longer exist on the remote:
+```bash
+git fetch --prune
+```
+
+2. List local branches that have been merged into the current branch (to identify candidates for deletion):
+```bash
+git branch --merged
+```
+
+3. Delete a specific local branch:
+```bash
+git branch -d <branch-name>
+```
+
+4. Force delete a local branch (if it contains unmerged changes):
+```bash
+git branch -D <branch-name>
+```
+
+5. To list local branches that track deleted remote branches:
+```bash
+git branch -vv | grep ': gone]'
+```
+
+6. To delete all local branches that track deleted remote branches:
+```bash
+git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -d
+```
