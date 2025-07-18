@@ -16,14 +16,14 @@ This is the backend for Achilles
     ```
 2. Navigate to the project directory:
     ```sh
-    cd achilles-backend
+    cd backend
     ```
 
 ### Running the Project
 
 To run the project, use the following command:
 ```sh
-go run server.go
+go run main.go
 ```
 
 ## Git Branch Management
